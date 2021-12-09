@@ -6,7 +6,7 @@
 
 `注意: 如果重複登記地址, 則系統會採用最後一次的登記地址`
 
-測試時期的地址簿設定, 請在自訂地址簿中設定以下網址:
+測試時期的地址簿設定如下: (請在自訂地址簿中設定以下網址)
 
 `https://www.ptt.cc/bbs/DigiCurrency/M.1639056719.A.024.html`
 
@@ -21,8 +21,9 @@ Ptt使用者的狗狗幣地址。
 ![img](doc/show-qrcode.jpg)
 ![img](doc/show-muti-search.PNG)
 
-## 如何下載
-目前正在上架Google中, 想搶先體驗可以直接下載此專案
+## 如何安裝
+目前正在上架Google中, 未來能直接在Google安裝,
+想搶先體驗可以直接下載此專案
 
 1. 將專案資料夾解壓縮
 2. 進入 chrome://extensions/
