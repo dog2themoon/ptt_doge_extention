@@ -1,0 +1,34 @@
+{
+  "name": "PTT Doge Address Search",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3,
+  "version": "0.1",
+  "description": "搜尋PTT使用者的,狗狗幣打賞地址",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.ptt.cc/*"
+      ],
+      "js": [
+        "thirdParty/wallet-address-validator.min.js","thirdParty/jquery-3.6.0.min.js", "thirdParty/jquery.qrcode.min.js", "loadUserAddressV2.js", "addQrcode.js" ,"showDogeAddress.js", "init.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ "images/dogecoin.png" ],
+      "matches": [ "https://www.ptt.cc/*" ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

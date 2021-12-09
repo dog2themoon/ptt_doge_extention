@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div style="width:800px">
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3">
+          <a href="#" target="_blank" class="link-success">操作手冊</a>
+        </div>
+        <div class="col d-flex align-items-center justify-content-center">
+          <p>Ptt 狗狗幣地址 搜尋器</p>
+        </div>
+        <div class="col-3 d-flex align-items-center justify-content-center">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="isToolOpenSwitch" checked>
+            <label class="form-check-label" for="isToolOpenSwitch">開啟</label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="input-group mb-3">
+          <input id="userID" type="text" class="form-control" placeholder="輸入使用者帳號,例如: frrr,user2,user3">
+          <button id="searchAddressButton" class="btn btn-outline-primary" type="button">搜尋對應地址</button>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col d-flex align-items-center justify-content-center">
+
+          <table id="usersAddress" class="table">
+            <thead>
+
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
+
+
+
+
+      <div class="row">
+
+
+        <div class="col d-flex  justify-content-center align-items-center ">
+
+          <button id="setAddressCollapse" class="btn" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <img src="images/wrench-removebg-preview.png" style="height: 1.5rem;"></img>
+          </button>
+
+          <!-- Todo 要垂直置中 -->
+          <div> 
+            <p >
+              地址簿 -->
+              <a id="addressPageURL" target="_blank" class="link-success"></a>
+              <span id=showAddressBookPeopleNum></span>
+              <a id="updateAddressBook" href="#" >更新/跳轉更新</a>
+            </p>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="row">
+        <div class="collapse" id="collapseExample">
+
+          <div class="input-group mb-3">
+            <input id="addressPage" type="text" class="form-control" placeholder="輸入自訂地址簿">
+            <button id="loadAddressButton" class="btn btn-outline-primary" type="button">設定地址來源</button>
+          </div>
+
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- "thirdParty/jquery-3.6.0.min.js", "thirdParty/jquery.qrcode.min.js", "loadUserAddressV2.js", "addQrcode.js" -->
+  <script src="thirdParty/jquery-3.6.0.min.js"></script>
+  <script src="bootstrap.bundle.min.js"></script>
+  <script src="thirdParty/jquery.qrcode.min.js"></script>
+  <script src="addQrcodeSmallSize.js"></script>
+  <script src="popup.js"></script>
+</body>
+
+</html>
