@@ -3,7 +3,7 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({ pttURL: 'https://www.ptt.cc/bbs/Test/M.1639022777.A.17A.html' });
+    chrome.storage.sync.set({ pttURL: 'https://www.ptt.cc/bbs/DigiCurrency/M.1639056719.A.024.html' });
 });
 
 chrome.runtime.onInstalled.addListener(() => {
