@@ -79,11 +79,9 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
     if (domain !== 'www.ptt.cc') {
         updateAddressBook.textContent = "跳轉更新"
-
-        updateAddressBook.addEventListener("click", () => {
-            chrome.storage.sync.get("pttURL", ({ pttURL }) => {
-                chrome.tabs.create({ url: pttURL });
-            });
+        chrome.storage.sync.get("pttURL", ({ pttURL }) => {
+            updateAddressBook.setAttribute("href", pttURL);
+            updateAddressBook.setAttribute('target', '_blank');
         });
         
     } else {
