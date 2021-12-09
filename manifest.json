@@ -1,11 +1,17 @@
 {
-  "name": "PTT Doge Address Search",
+  "name": "Ptt 狗狗幣地址 查詢器",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/icon/doge-16.png",
+      "32": "/images/icon/doge-32.png",
+      "48": "/images/icon/doge-48.png",
+      "128": "/images/icon/doge-128.png"
+  }
   },
   "manifest_version": 3,
   "version": "0.1",
-  "description": "搜尋PTT使用者的,狗狗幣打賞地址",
+  "description": "搜尋Ptt使用者的,狗狗幣打賞地址, 方便使用者對優質文章打賞支持",
   "permissions": [
     "activeTab",
     "scripting",
@@ -30,5 +36,11 @@
   ],
   "background": {
     "service_worker": "background.js"
+  },
+  "icons": {
+      "16": "/images/icon/doge-16.png",
+      "32": "/images/icon/doge-32.png",
+      "48": "/images/icon/doge-48.png",
+      "128": "/images/icon/doge-128.png"
   }
 }

@@ -19,8 +19,8 @@ function addQrcode(elementID, qrcodeContent) {
         $("#code").remove(); //滑鼠移出時間，remove掉該div
     }).mousemove(function (e) {//滑鼠移動事件，設定具體座標，這裡設定成向上，向下top改成e.pageY+y，如果想向左可以改left
         $("#code").css({
-            "top": (e.pageY + 6 * y - 200) + "px",
-            "left": (e.pageX + x) + "px"
+            "top": (e.pageY + 2 * y - 100) + "px",
+            "left": (e.pageX + 2*x) + "px"
         }).empty().qrcode({ //empty清除二維碼後qrcode重新顯示，不然會出現很多二維碼
             render: "table",//這裡用table難以識別比較長的網址產生的二維碼
             width: 100,
