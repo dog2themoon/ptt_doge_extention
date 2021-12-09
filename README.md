@@ -16,8 +16,10 @@
 Ptt使用者的狗狗幣地址。
 
 [影片 Demo](https://www.youtube.com/watch?v=MsRM1o98LJc)
-![img](doc/1-std.jpg)
-![img](doc/2-std.jpg)
+
+![img](doc/doge_ptt_effect.gif)
+![img](doc/show-qrcode.jpg)
+![img](doc/show-muti-search.PNG)
 
 ## 如何下載
 目前正在上架Google中, 想搶先體驗可以直接下載此專案
