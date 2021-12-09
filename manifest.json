@@ -11,7 +11,7 @@
   },
   "manifest_version": 3,
   "version": "0.1",
-  "description": "搜尋Ptt使用者的,狗狗幣打賞地址,方便使用者對優質文章打賞支持,一起讓狗狗幣成為星際貨幣吧! GitHub連結: https://github.com/dog2themoon/ptt_doge_extention",
+  "description": "搜尋Ptt使用者的,狗狗幣打賞地址,方便使用者對優質文章打賞支持,一起讓狗狗幣成為星際貨幣吧!",
   "permissions": [
     "activeTab",
     "scripting",
