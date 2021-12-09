@@ -65,7 +65,7 @@ function updateAddressBookPeople() {
     let showAddressBookPeopleNum = document.getElementById("showAddressBookPeopleNum");
     chrome.storage.sync.get("userAddress", ({ userAddress }) => {
         let peopleNum = Object.keys(userAddress).length;
-        showAddressBookPeopleNum.textContent = '[登記人數: ' + peopleNum + ' ]';
+        showAddressBookPeopleNum.textContent = '[登記人數: ' + peopleNum + ']';
     });
 }
 
