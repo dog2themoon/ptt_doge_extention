@@ -9,6 +9,24 @@
 方便的搜尋到, 
 Ptt使用者的狗狗幣地址。
 
+[影片 Demo](https://www.youtube.com/watch?v=MsRM1o98LJc)
+![img](doc/1-std.jpg)
+![img](doc/2-std.jpg)
+
+## 如何下載
+目前正在上架Google中, 想搶先體驗可以直接下載此專案
+
+1. 將專案資料夾解壓縮
+2. 進入 chrome://extensions/
+3. 把右上角的開發人員選項打開
+4. 點選`載入未封裝項目`, 選擇剛才解壓縮的資料夾即可
+如圖: 
+![img](doc/how-to-start.PNG)
+
+
+
+
+
 
 
 
