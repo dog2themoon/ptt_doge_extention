@@ -15,7 +15,7 @@
 方便的搜尋到, 
 Ptt使用者的狗狗幣地址。
 
-[影片 Demo](https://www.youtube.com/watch?v=MsRM1o98LJc)
+[影片 Demo](https://www.youtube.com/watch?v=_QHaZa7bfBs)
 
 ![img](doc/doge_ptt_effect.gif)
 ![img](doc/show-qrcode.jpg)
