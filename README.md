@@ -1,4 +1,4 @@
-# 台灣Ptt論壇專屬的 狗狗幣地址搜尋器
+# Ptt 狗狗幣地址 查詢器
 標準的地址簿設定: (請在擴充功能中設定以下連結)
 
 `https://www.ptt.cc/bbs/DigiCurrency/M.1639056719.A.024.html`
