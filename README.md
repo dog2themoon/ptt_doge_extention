@@ -1,14 +1,13 @@
 # 台灣Ptt論壇專屬的 狗狗幣地址搜尋器
+標準的地址簿設定: (請在擴充功能中設定以下連結)
+
+`https://www.ptt.cc/bbs/DigiCurrency/M.1639056719.A.024.html`
 
 此Google擴充功能僅會將有在地址簿留言的人加入清單
 
-趕快到以下的地址簿連結推文, 登記自己的狗狗幣地址吧!
+趕快到以上的地址簿連結推文, 登記自己的狗狗幣地址吧!
 
 `注意: 如果重複登記地址, 則系統會採用最後一次的登記地址`
-
-測試時期的地址簿設定如下: (請在自訂地址簿中設定以下網址)
-
-`https://www.ptt.cc/bbs/DigiCurrency/M.1639056719.A.024.html`
 
 ## 關於
 此應用目的是,讓Ptt論壇中的所有人, 
@@ -22,9 +21,12 @@ Ptt使用者的狗狗幣地址。
 ![img](doc/show-muti-search.PNG)
 
 ## 如何安裝
-目前正在上架Google中, 未來能直接在Google安裝,
-想搶先體驗可以直接下載此專案
+目前已經上架到Google中了, 版本為 v0.1
+[擴充功能連結](https://chrome.google.com/webstore/detail/ptt-%E7%8B%97%E7%8B%97%E5%B9%A3%E5%9C%B0%E5%9D%80-%E6%9F%A5%E8%A9%A2%E5%99%A8/acpcdgdhccpllbnaelmhmnokifgojnhl/related?hl=zh-TW&authuser=4)
+但 v0.1版本 地址簿需要自行修正,
+所以目前正在提交新版本上架中。
 
+如果想體驗最新版本可以直接下載此專案
 1. 將專案資料夾解壓縮
 2. 進入 chrome://extensions/
 3. 把右上角的開發人員選項打開
