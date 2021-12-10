@@ -1,28 +1,22 @@
 
 function reloadWindow() {
-    let queryOptions = { active: true, currentWindow: true };
-    chrome.tabs.query(queryOptions, function (tabs) {
-        let tab = tabs[0];
-        chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            function: () => {
-                window.location.reload();
-            }
-        });
-    });
-
+    reloadWindowAtDomain('*');
 }
 
 function reloadWindowJustRunInPtt() {
+    reloadWindowAtDomain('www.ptt.cc');
+}
+
+function reloadWindowAtDomain(allowDomain) { // if allowDomain === *, is always reload
     let queryOptions = { active: true, currentWindow: true };
     chrome.tabs.query(queryOptions, function (tabs) {
 
-        var activeTab = tabs[0];
-        let domain = (new URL(activeTab.url)).hostname;
+        let tab = tabs[0];
+        let domain = (new URL(tab.url)).hostname;
 
-        if (domain === 'www.ptt.cc') {
+        if (allowDomain === '*' || domain === allowDomain) {
             chrome.scripting.executeScript({
-                target: { tabId: activeTab.id },
+                target: { tabId: tab.id },
                 function: () => {
                     window.location.reload();
                 }
@@ -33,17 +27,15 @@ function reloadWindowJustRunInPtt() {
 
 }
 
-
+// init 顯示地址簿
 let addressPageURL = document.getElementById("addressPageURL");
-
-// init
 chrome.storage.sync.get("pttURL", ({ pttURL }) => {
     addressPageURL.textContent = pttURL;
     addressPageURL.setAttribute("href", pttURL);
 });
 
+// 顯示標註開關
 let isToolOpenSwitch = document.getElementById("isToolOpenSwitch");
-
 chrome.storage.sync.get("isToolOpen", ({ isToolOpen }) => {
     if (isToolOpen) {
         isToolOpenSwitch.checked = true;
@@ -69,51 +61,50 @@ function updateAddressBookPeople() {
     });
 }
 
-chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+shoeUpdateAddressBookLink();
+function shoeUpdateAddressBookLink() {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
-    var activeTab = tabs[0];
-    let domain = (new URL(activeTab.url)).hostname;
-
-
-    let updateAddressBook = document.getElementById("updateAddressBook");
-
-    if (domain !== 'www.ptt.cc') {
-        updateAddressBook.textContent = "跳轉更新"
-        chrome.storage.sync.get("pttURL", ({ pttURL }) => {
-            updateAddressBook.setAttribute("href", pttURL);
-            updateAddressBook.setAttribute('target', '_blank');
-        });
-        
-    } else {
-        updateAddressBook.textContent = "更新"
-
-        updateAddressBook.addEventListener("click", () => {
-            reloadWindow();
-        });
-        
-    }
-
-});
-
-
+        var activeTab = tabs[0];
+        let domain = (new URL(activeTab.url)).hostname;
+    
+        let updateAddressBook = document.getElementById("updateAddressBook");
+    
+        if (domain !== 'www.ptt.cc') {
+            updateAddressBook.textContent = "跳轉更新"
+            chrome.storage.sync.get("pttURL", ({ pttURL }) => {
+                updateAddressBook.setAttribute("href", pttURL);
+                updateAddressBook.setAttribute('target', '_blank');
+            });
+            
+        } else {
+            updateAddressBook.textContent = "更新"
+            updateAddressBook.addEventListener("click", () => {
+                reloadWindow();
+            });
+        }
+    });
+}
 
 
 
 let loadAddressButton = document.getElementById("loadAddressButton");
-
 loadAddressButton.addEventListener("click", async () => {
 
     let addressPage = document.getElementById("addressPage");
     let addressPageValue = addressPage.value;
+
+    addressPageValue = addressPageValue.replace(/\s+/g, '');// 清除空白
+
     if (addressPageValue != '') {
         addressPageURL.textContent = addressPageValue;
         chrome.storage.sync.set({ pttURL: addressPageValue });
         addressPage.value = '';
         chrome.storage.sync.set({ userAddress: {} });
         reloadWindowJustRunInPtt(); // 防止在其它 domain 無效
-    }
 
-    window.location.reload();
+        window.location.reload(); // 自身重載 會觸發計算登記人數
+    }
 });
 
 
@@ -130,23 +121,40 @@ isToolOpenSwitch.addEventListener("click", () => {
 
 
 let searchAddressButton = document.getElementById("searchAddressButton");
-searchAddressButton.addEventListener("click", () => {
+searchAddressButton.addEventListener("click", () => { // 允許用逗號或空白分割多使用者
 
-    let userID = document.getElementById("userID").value;
+    let userID = document.getElementById("userID").value; 
+    let userList = userID.split(',');
+    
+    if(userList.length === 1) {
+        userList = userID.split(' ');
+    }
 
+    let cleanUserList = userList.filter(function(str) { // 只篩選出非空字元的ID
+        if(str !== '') {
+            return str;
+        }
+    });
+    
+
+    showUsersAddress(cleanUserList);
+})
+
+
+
+function showUsersAddress(userList) {
+    
     chrome.storage.sync.get("userAddress", ({ userAddress }) => {
 
-        var userAry = userID.split(',');
-        console.log(userAry);
+        console.log("search: ", userList);
 
         // init 欄位
         $("#usersAddress>thead").empty();
         $("#usersAddress>tbody").empty();
 
 
-
         let needShowFirstThead = true;
-        userAry.forEach((id, index) => {
+        userList.forEach((id, index) => {
 
 
             id = id.replace(/\s+/g, '');// 清除空白
@@ -190,7 +198,7 @@ searchAddressButton.addEventListener("click", () => {
 
     });
 
-})
+}
 
 
 
