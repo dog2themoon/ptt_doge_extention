@@ -21,8 +21,7 @@ Ptt使用者的狗狗幣地址。
 ![img](doc/show-muti-search.PNG)
 
 ## 如何安裝
-目前已經上架到Google 擴充商店中了, 直接下載後,修改地址簿設定成此文開頭說明的
-[Ptt 狗狗幣地址 查詢器](https://chrome.google.com/webstore/detail/ptt-%E7%8B%97%E7%8B%97%E5%B9%A3%E5%9C%B0%E5%9D%80-%E6%9F%A5%E8%A9%A2%E5%99%A8/acpcdgdhccpllbnaelmhmnokifgojnhl)
+目前已經上架到Google 擴充商店中了, [下載連結在此](https://chrome.google.com/webstore/detail/ptt-%E7%8B%97%E7%8B%97%E5%B9%A3%E5%9C%B0%E5%9D%80-%E6%9F%A5%E8%A9%A2%E5%99%A8/acpcdgdhccpllbnaelmhmnokifgojnhl)
 
 以下為另一種安裝方式, 可體驗到最新未發布的版本:
 
