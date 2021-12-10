@@ -33,7 +33,8 @@ Ptt使用者的狗狗幣地址。
 ![img](doc/how-to-start.PNG)
 
 ## 如何使用
-只要到 https://www.ptt.cc/ 網站下, 點開任何一篇文章時,
+只要到 https://www.ptt.cc/bbs/index.html 網站下, 
+點開任何一篇文章時,
 都會標註地址在有登記地址簿的使用者ID旁,
 
 可先到此網頁測試, 祝使用愉快 :)
