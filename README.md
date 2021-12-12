@@ -1,4 +1,7 @@
 # Ptt 狗狗幣地址 查詢器
+
+[此擴充下載連結](https://chrome.google.com/webstore/detail/ptt-%E7%8B%97%E7%8B%97%E5%B9%A3%E5%9C%B0%E5%9D%80-%E6%9F%A5%E8%A9%A2%E5%99%A8/acpcdgdhccpllbnaelmhmnokifgojnhl)
+
 標準的地址簿設定: (請在擴充功能中設定以下連結)
 
 `https://www.ptt.cc/bbs/DigiCurrency/M.1639056719.A.024.html`
@@ -20,10 +23,20 @@ Ptt使用者的狗狗幣地址。
 ![img](doc/show-qrcode.jpg)
 ![img](doc/show-muti-search.PNG)
 
-## 如何安裝
-目前已經上架到Google 擴充商店中了, [下載連結在此](https://chrome.google.com/webstore/detail/ptt-%E7%8B%97%E7%8B%97%E5%B9%A3%E5%9C%B0%E5%9D%80-%E6%9F%A5%E8%A9%A2%E5%99%A8/acpcdgdhccpllbnaelmhmnokifgojnhl)
+## 如何使用
+先到此下載[Ptt 狗狗幣地址 查詢器](https://chrome.google.com/webstore/detail/ptt-%E7%8B%97%E7%8B%97%E5%B9%A3%E5%9C%B0%E5%9D%80-%E6%9F%A5%E8%A9%A2%E5%99%A8/acpcdgdhccpllbnaelmhmnokifgojnhl)
+, 之後只要到 https://www.ptt.cc/bbs/index.html 網站下,
+點開任何一篇文章時,
+都會標註地址在有登記地址簿的使用者ID旁,
 
-以下為另一種安裝方式, 可體驗到最新未發布的版本:
+可先到此網頁測試, 祝使用愉快 :)
+
+https://www.ptt.cc/bbs/DigiCurrency/M.1639056719.A.024.html
+
+
+## 從此原始碼安裝方法
+
+此安裝方式, 會下載到最新版:
 
 1. 直接下載此專案後, 將專案資料夾解壓縮
 2. 進入 chrome://extensions/
@@ -32,18 +45,6 @@ Ptt使用者的狗狗幣地址。
 如圖: 
 ![img](doc/how-to-start.PNG)
 
-## 如何使用
-先在擴充功能的地址簿設定中設定以下連結:
-
-`https://www.ptt.cc/bbs/DigiCurrency/M.1639056719.A.024.html`
-
-之後只要到 https://www.ptt.cc/bbs/index.html 網站下
-點開任何一篇文章時,
-都會標註地址在有登記地址簿的使用者ID旁,
-
-可先到此網頁測試, 祝使用愉快 :)
-
-https://www.ptt.cc/bbs/DigiCurrency/M.1639056719.A.024.html
 
 
 
