@@ -66,9 +66,9 @@ chrome.storage.sync.get("participant", ({ participant }) => {
             let userID = participant[i];
             let address = userAddress[userID];
             if(address) {
-                userAndAddressList.push( { [userID]: address } );
+                userAndAddressList.push( [userID, address ] );
             } else {
-                userAndAddressList.push( { [userID]: "notRegister" } );
+                userAndAddressList.push( [userID, "notRegister" ] );
             }
             
         }
