@@ -22,7 +22,7 @@ function reloadWindowAtDomain(allowDomain) { // if allowDomain === *, is always 
                 }
             });
         }
-        
+
     });
 
 }
@@ -44,7 +44,46 @@ chrome.storage.sync.get("isToolOpen", ({ isToolOpen }) => {
     }
 });
 
+// 加上搜尋所有參與者功能
+let searchParticipantButton = document.getElementById("searchParticipant");
+searchParticipantButton.addEventListener("click", () => {
+    chrome.storage.sync.get("participant", ({ participant }) => {
+        showUsersAddress(participant);
+    })
+});
 
+// 加上下載所有參與者功能
+let downloadParticipantJson = document.getElementById("downloadParticipantJson");
+
+chrome.storage.sync.get("participant", ({ participant }) => {
+
+    chrome.storage.sync.get("userAddress", ({ userAddress })=>{
+
+        let userAndAddressList = [];
+
+        for(let i = 0 ; i < participant.length ; i++) {
+
+            let userID = participant[i];
+            let address = userAddress[userID];
+            if(address) {
+                userAndAddressList.push( [userID, address ] );
+            } else {
+                userAndAddressList.push( [userID, "notRegister" ] );
+            }
+            
+        }
+
+        let content = JSON.stringify(userAndAddressList);
+        console.log(content);
+
+        const file = new Blob([content], { type: "text/plain" });
+        downloadParticipantJson.href = URL.createObjectURL(file);
+
+        let fileName = "participant.json";
+        downloadParticipantJson.download = fileName;
+
+    });
+});
 
 updateAddressBookPeople();
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => { // 在重載地址簿時也會重新計算
@@ -61,22 +100,22 @@ function updateAddressBookPeople() {
     });
 }
 
-shoeUpdateAddressBookLink();
-function shoeUpdateAddressBookLink() {
+showUpdateAddressBookLink();
+function showUpdateAddressBookLink() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
         var activeTab = tabs[0];
         let domain = (new URL(activeTab.url)).hostname;
-    
+
         let updateAddressBook = document.getElementById("updateAddressBook");
-    
+
         if (domain !== 'www.ptt.cc') {
             updateAddressBook.textContent = "跳轉更新"
             chrome.storage.sync.get("pttURL", ({ pttURL }) => {
                 updateAddressBook.setAttribute("href", pttURL);
                 updateAddressBook.setAttribute('target', '_blank');
             });
-            
+
         } else {
             updateAddressBook.textContent = "更新"
             updateAddressBook.addEventListener("click", () => {
@@ -112,10 +151,10 @@ loadAddressButton.addEventListener("click", async () => {
 isToolOpenSwitch.addEventListener("click", () => {
     if (isToolOpenSwitch.checked == false) {
         chrome.storage.sync.set({ isToolOpen: false });
-        reloadWindow();
+        reloadWindowJustRunInPtt();
     } else {
         chrome.storage.sync.set({ isToolOpen: true });
-        reloadWindow();
+        reloadWindowJustRunInPtt();
     }
 })
 
@@ -123,19 +162,19 @@ isToolOpenSwitch.addEventListener("click", () => {
 let searchAddressButton = document.getElementById("searchAddressButton");
 searchAddressButton.addEventListener("click", () => { // 允許用逗號或空白分割多使用者
 
-    let userID = document.getElementById("userID").value; 
+    let userID = document.getElementById("userID").value;
     let userList = userID.split(',');
-    
-    if(userList.length === 1) {
+
+    if (userList.length === 1) {
         userList = userID.split(' ');
     }
 
-    let cleanUserList = userList.filter(function(str) { // 只篩選出非空字元的ID
-        if(str !== '') {
+    let cleanUserList = userList.filter(function (str) { // 只篩選出非空字元的ID
+        if (str !== '') {
             return str;
         }
     });
-    
+
 
     showUsersAddress(cleanUserList);
 })
@@ -143,7 +182,7 @@ searchAddressButton.addEventListener("click", () => { // 允許用逗號或空�
 
 
 function showUsersAddress(userList) {
-    
+
     chrome.storage.sync.get("userAddress", ({ userAddress }) => {
 
         console.log("search: ", userList);
