@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <div style="width:800px">
+  <div style="width:780px">
 
 
     <div class="container-fluid">
@@ -17,7 +17,7 @@
           <a href="https://github.com/dog2themoon/ptt_doge_extention" target="_blank" class="link-success">操作手冊</a>
         </div>
         <div class="col d-flex align-items-center justify-content-center">
-          <p>Ptt 狗狗幣地址 搜尋器</p>
+          <h5>Ptt 狗狗幣地址 搜尋器</h5>
         </div>
         <div class="col-3 d-flex align-items-center justify-content-center">
           <div class="form-check form-switch">
@@ -30,24 +30,40 @@
 
       <div class="row">
 
-        <div class="input-group mb-3">
-          <input id="userID" type="text" class="form-control" placeholder="輸入使用者帳號,例如: frrr,user2,user3">
-          <button id="searchAddressButton" class="btn btn-outline-primary" type="button">搜尋對應地址</button>
+        <div class="col">
+
+          <div class="input-group mb-3">
+            <input id="userID" type="text" class="form-control" placeholder="輸入使用者帳號,例如: frrr,user2,user3">
+
+            <div class="btn-group">
+              <button id="searchAddressButton" type="button" class="btn btn-outline-primary">搜尋對應地址</button>
+              <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a id="searchParticipant" class="dropdown-item" href="#">搜尋此文參與者</a></li>
+                <li><a class="dropdown-item" href="#">下載 參與者.json</a></li>
+              </ul>
+            </div>
+          </div>
+
+
         </div>
 
       </div>
 
-      <div class="row">
+      <div class="row justify-content-center">
 
-        <div class="col d-flex align-items-center justify-content-center">
+        <div class="col-11">
 
           <table id="usersAddress" class="table">
-            <thead>
 
+            <thead>
             </thead>
             <tbody>
-
             </tbody>
+
           </table>
 
         </div>
@@ -68,12 +84,12 @@
           </button>
 
           <!-- Todo 要垂直置中 -->
-          <div> 
-            <p >
+          <div>
+            <p>
               地址簿->
               <a id="addressPageURL" target="_blank" class="link-success"></a>
               <span id=showAddressBookPeopleNum></span>
-              <a id="updateAddressBook" href="#" >更新/跳轉更新</a>
+              <a id="updateAddressBook" href="#">更新/跳轉更新</a>
             </p>
           </div>
         </div>

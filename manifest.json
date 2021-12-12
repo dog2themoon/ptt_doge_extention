@@ -23,7 +23,7 @@
         "https://www.ptt.cc/*"
       ],
       "js": [
-        "thirdParty/wallet-address-validator.min.js","thirdParty/jquery-3.6.0.min.js", "thirdParty/jquery.qrcode.min.js", "loadUserAddressV2.js", "addQrcode.js" ,"showDogeAddress.js", "init.js"
+        "thirdParty/wallet-address-validator.min.js","thirdParty/jquery-3.6.0.min.js", "thirdParty/jquery.qrcode.min.js", "loadUserAddressV2.js", "addQrcode.js" ,"showDogeAddress.js", "loadParticipant.js", "init.js"
       ]
     }
   ],

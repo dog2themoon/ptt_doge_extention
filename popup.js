@@ -27,6 +27,67 @@ function reloadWindowAtDomain(allowDomain) { // if allowDomain === *, is always 
 
 }
 
+searchParticipant
+
+
+let searchParticipantButton = document.getElementById("searchParticipant");
+searchParticipantButton.addEventListener("click", () => {
+
+
+    chrome.storage.sync.get("participant", ({ participant })=>{
+        showUsersAddress(participant);
+    } )
+    
+});
+
+
+//test
+
+// let queryOptions = { active: true, currentWindow: true };
+// chrome.tabs.query(queryOptions, function (tabs) {
+
+//     let tab = tabs[0];
+
+//     chrome.scripting.executeScript({
+//         target: { tabId: tab.id },
+//         function: () => {
+            
+//             let AllUsers = document.getElementsByClassName('push');
+//             let AllUserID = [];
+//             for (let i = 0; i < AllUsers.length; i++) {
+//                 let user = AllUsers[i];
+//                 let userID = user.getElementsByClassName('push-userid')[0].textContent;
+
+//                 AllUserID.push(userID);
+//             }
+//             var NotRepeatingUserID = AllUserID.filter(function(item, index, array){
+//                 return AllUserID.indexOf(item) === index;
+//             });
+
+//             console.log("NotRepeatingUserID");
+//             console.log(NotRepeatingUserID);
+
+//             let out_str = '';
+//             NotRepeatingUserID.forEach((userID)=>{
+//                 out_str = out_str + userID + ','
+                
+//             });
+//             console.log(out_str)
+
+//         }
+//     });
+
+// });
+// 還要做一個多重發送的工具
+
+
+
+
+
+
+
+
+
 // init 顯示地址簿
 let addressPageURL = document.getElementById("addressPageURL");
 chrome.storage.sync.get("pttURL", ({ pttURL }) => {
@@ -61,8 +122,8 @@ function updateAddressBookPeople() {
     });
 }
 
-shoeUpdateAddressBookLink();
-function shoeUpdateAddressBookLink() {
+showUpdateAddressBookLink();
+function showUpdateAddressBookLink() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
         var activeTab = tabs[0];
@@ -112,10 +173,10 @@ loadAddressButton.addEventListener("click", async () => {
 isToolOpenSwitch.addEventListener("click", () => {
     if (isToolOpenSwitch.checked == false) {
         chrome.storage.sync.set({ isToolOpen: false });
-        reloadWindow();
+        reloadWindowJustRunInPtt();
     } else {
         chrome.storage.sync.set({ isToolOpen: true });
-        reloadWindow();
+        reloadWindowJustRunInPtt();
     }
 })
 
