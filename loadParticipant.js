@@ -16,8 +16,6 @@ function loadParticipant() {
     });
     
     let participant = NotRepeatingUserID;
-    console.log("participant");
-    console.log(participant);
     
     chrome.storage.sync.set({ participant: participant });
 }
