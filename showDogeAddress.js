@@ -5,7 +5,7 @@ window.showDogeAddress = showDogeAddress;
 
 function showDogeAddress() {
 
-    let authorID = $(".article-meta-value")[0].textContent;
+    let authorID = $(".article-meta-value")[0].textContent; // Todo 需要加檢查
     authorID = authorID.split(' ')[0];
 
     chrome.storage.sync.get("userAddress", ({ userAddress }) => {
@@ -68,9 +68,13 @@ function showDogeAddress() {
             user.insertBefore(dogecoinSpan, user.firstChild); 
 
 
+            let userIDElement = user.getElementsByClassName('push-userid');
+            let userID = '';
+            if(userIDElement.length > 0) {
+                userID = userIDElement[0].textContent;
+            }
 
-            let userID = user.getElementsByClassName('push-userid')[0];
-            let dogeAddress = userAddress[userID.textContent];
+            let dogeAddress = userAddress[userID];
             if (dogeAddress) {
 
                 let dogecoinImgID = dogeAddress + "-img-" + i;
