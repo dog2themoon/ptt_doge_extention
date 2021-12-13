@@ -45,43 +45,43 @@ function showDogeAddress() {
 
     let AllUsers = document.getElementsByClassName('push');
     let userPushTag = AllUsers[0].getElementsByClassName('push-tag')[0];
-    let dogeImgSize = Math.floor(userPushTag.clientWidth * 0.7);
+    let dogeImgSize = Math.floor(userPushTag.clientWidth * 0.6);
+    let dogeImgURL = chrome.runtime.getURL("images/dogecoin.png");
 
 
     for (let i = 0; i < AllUsers.length; i++) {
         let user = AllUsers[i];
-        // console.log(user);
-
-        let userPushTag = user.getElementsByClassName('push-tag')[0];
-        let userID = user.getElementsByClassName('push-userid')[0];
 
         chrome.storage.sync.get("userAddress", ({ userAddress }) => {
 
+            // 設定圖示出現位置. 為了版面整齊, 所以都一律放圖示
+            let dogecoinSpan = document.createElement("span");
+            let dogecoinImg = document.createElement("img");
+
+            dogecoinImg.setAttribute("width", dogeImgSize);
+            dogecoinImg.setAttribute("height", dogeImgSize);
+            
+            dogecoinImg.setAttribute("src", dogeImgURL);
+            dogecoinSpan.setAttribute("class", "h1");
+            dogecoinImg.style.cssText = "position: relative;top: 0.2rem;" // for 置中
+            dogecoinSpan.appendChild(dogecoinImg);
+            user.insertBefore(dogecoinSpan, user.firstChild); 
+
+
+
+            let userID = user.getElementsByClassName('push-userid')[0];
             let dogeAddress = userAddress[userID.textContent];
             if (dogeAddress) {
-
-
-                var dogecoinDIV = document.createElement("div");
-                var dogecoinImg = document.createElement("img");
 
                 let dogecoinImgID = dogeAddress + "-img-" + i;
                 dogecoinImg.setAttribute("id", dogecoinImgID);
 
-
-                dogecoinImg.setAttribute("width", dogeImgSize);
-                dogecoinImg.setAttribute("height", dogeImgSize);
-
-                var dogeImgURL = chrome.runtime.getURL("images/dogecoin.png");
-                dogecoinImg.setAttribute("src", dogeImgURL);
-
-
-                dogecoinDIV.appendChild(dogecoinImg);
-                dogecoinImg.style.cssText = "position: absolute;left: 0px;bottom: 0px";
-                userPushTag.textContent = '';
-                userPushTag.appendChild(dogecoinDIV);
-
                 window.addQrcode(dogecoinImgID, dogeAddress); // Todo 還需要多一個確認
+
+            } else {
+                dogecoinImg.style.cssText = "visibility:hidden;";
             }
+
         });
     }
 }
