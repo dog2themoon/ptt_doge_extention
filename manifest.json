@@ -10,7 +10,7 @@
   }
   },
   "manifest_version": 3,
-  "version": "1.1",
+  "version": "1.2",
   "description": "搜尋Ptt使用者的狗狗幣打賞地址",
   "permissions": [
     "activeTab",
