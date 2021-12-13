@@ -1,8 +1,3 @@
-
-function reloadWindow() {
-    reloadWindowAtDomain('*');
-}
-
 function reloadWindowJustRunInPtt() {
     reloadWindowAtDomain('www.ptt.cc');
 }
@@ -119,7 +114,7 @@ function showUpdateAddressBookLink() {
         } else {
             updateAddressBook.textContent = "更新"
             updateAddressBook.addEventListener("click", () => {
-                reloadWindow();
+                reloadWindowJustRunInPtt();
             });
         }
     });
