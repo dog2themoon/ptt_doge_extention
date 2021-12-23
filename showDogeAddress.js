@@ -3,10 +3,19 @@
 
 window.showDogeAddress = showDogeAddress;
 
+
 function showDogeAddress() {
+
+    showAddressOnBoard();
+
+    if ($(".article-meta-value").length === 0) { // Not in article page
+        return;
+    }
 
     let authorID = $(".article-meta-value")[0].textContent; // Todo 需要加檢查
     authorID = authorID.split(' ')[0];
+
+    let dogeImgURL = chrome.runtime.getURL("images/dogecoin.png");
 
     chrome.storage.sync.get("userAddress", ({ userAddress }) => {
 
@@ -20,10 +29,7 @@ function showDogeAddress() {
             let dogecoinImgID = dogeAddress + "-imgAuthor";
             dogecoinImg.setAttribute("id", dogecoinImgID);
 
-
-            var dogeImgURL = chrome.runtime.getURL("images/dogecoin.png");
             dogecoinImg.setAttribute("src", dogeImgURL);
-
 
             dogecoinSpan.appendChild(dogecoinImg);
             dogecoinImg.style.cssText = "width:1rem";
@@ -46,7 +52,6 @@ function showDogeAddress() {
     let AllUsers = document.getElementsByClassName('push');
     let userPushTag = AllUsers[0].getElementsByClassName('push-tag')[0];
     let dogeImgSize = Math.floor(userPushTag.clientWidth * 0.6);
-    let dogeImgURL = chrome.runtime.getURL("images/dogecoin.png");
 
 
     for (let i = 0; i < AllUsers.length; i++) {
@@ -60,17 +65,17 @@ function showDogeAddress() {
 
             dogecoinImg.setAttribute("width", dogeImgSize);
             dogecoinImg.setAttribute("height", dogeImgSize);
-            
+
             dogecoinImg.setAttribute("src", dogeImgURL);
             dogecoinSpan.setAttribute("class", "h1");
             dogecoinImg.style.cssText = "position: relative;top: 0.2rem;" // for 置中
             dogecoinSpan.appendChild(dogecoinImg);
-            user.insertBefore(dogecoinSpan, user.firstChild); 
+            user.insertBefore(dogecoinSpan, user.firstChild);
 
 
             let userIDElement = user.getElementsByClassName('push-userid');
             let userID = '';
-            if(userIDElement.length > 0) {
+            if (userIDElement.length > 0) {
                 userID = userIDElement[0].textContent;
             }
 
@@ -87,5 +92,47 @@ function showDogeAddress() {
             }
 
         });
+    }
+}
+
+function showAddressOnBoard() {
+    let boardAuthor = $('.r-ent > .meta > .author');
+    if (boardAuthor.length === 0) { // is not exist
+        return;
+    }
+
+    let dogeImgURL = chrome.runtime.getURL("images/dogecoin.png");
+
+    for (let i = 0; i < boardAuthor.length; i++) {
+
+        let author = boardAuthor[i];
+        let authorID = author.textContent;
+
+        chrome.storage.sync.get("userAddress", ({ userAddress }) => {
+
+            let dogeAddress = userAddress[authorID];
+
+            if (dogeAddress) {
+                var dogecoinSpan = document.createElement("span");
+                var dogecoinImg = document.createElement("img");
+
+                let dogecoinImgID = dogeAddress + "-imgAuthor-" + i;
+                dogecoinImg.setAttribute("id", dogecoinImgID);
+
+
+                
+                dogecoinImg.setAttribute("src", dogeImgURL);
+
+
+                dogecoinSpan.appendChild(dogecoinImg);
+                dogecoinImg.style.cssText = "width:1rem";
+
+                author.insertBefore(dogecoinSpan, author.firstChild);
+
+                window.addQrcode(dogecoinImgID, dogeAddress); // Todo 還需要多一個確認
+            }
+
+        }
+        )
     }
 }
