@@ -1,5 +1,10 @@
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({ isToolOpen: true });
+    chrome.storage.sync.get("isToolOpen", ({ isToolOpen })=>{
+        if(typeof isToolOpen === undefined) {
+            chrome.storage.sync.set({ isToolOpen: true });
+        }
+    });
+    
 });
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -7,5 +12,9 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({ userAddress: {} });
+    chrome.storage.sync.get("userAddress", ({ userAddress })=>{
+        if(typeof userAddress === undefined) {
+            chrome.storage.sync.set({ userAddress: {} });
+        }
+    });
 });
