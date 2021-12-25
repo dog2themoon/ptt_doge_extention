@@ -53,11 +53,11 @@ function showDogeAddress() {
     let userPushTag = AllUsers[0].getElementsByClassName('push-tag')[0];
     let dogeImgSize = Math.floor(userPushTag.clientWidth * 0.6);
 
+    chrome.storage.sync.get("userAddress", ({ userAddress }) => {
 
-    for (let i = 0; i < AllUsers.length; i++) {
-        let user = AllUsers[i];
+        for (let i = 0; i < AllUsers.length; i++) {
+            let user = AllUsers[i];
 
-        chrome.storage.sync.get("userAddress", ({ userAddress }) => {
 
             // 設定圖示出現位置. 為了版面整齊, 所以都一律放圖示
             let dogecoinSpan = document.createElement("span");
@@ -91,8 +91,10 @@ function showDogeAddress() {
                 dogecoinImg.style.cssText = "visibility:hidden;";
             }
 
-        });
-    }
+
+        }
+    });
+
 }
 
 function showAddressOnBoard() {
@@ -103,12 +105,13 @@ function showAddressOnBoard() {
 
     let dogeImgURL = chrome.runtime.getURL("images/dogecoin.png");
 
-    for (let i = 0; i < boardAuthor.length; i++) {
+    chrome.storage.sync.get("userAddress", ({ userAddress }) => {
 
-        let author = boardAuthor[i];
-        let authorID = author.textContent;
+        for (let i = 0; i < boardAuthor.length; i++) {
 
-        chrome.storage.sync.get("userAddress", ({ userAddress }) => {
+            let author = boardAuthor[i];
+            let authorID = author.textContent;
+
 
             let dogeAddress = userAddress[authorID];
 
@@ -118,9 +121,6 @@ function showAddressOnBoard() {
 
                 let dogecoinImgID = dogeAddress + "-imgAuthor-" + i;
                 dogecoinImg.setAttribute("id", dogecoinImgID);
-
-
-                
                 dogecoinImg.setAttribute("src", dogeImgURL);
 
 
@@ -131,8 +131,7 @@ function showAddressOnBoard() {
 
                 window.addQrcode(dogecoinImgID, dogeAddress); // Todo 還需要多一個確認
             }
-
         }
-        )
-    }
+    });
+
 }
