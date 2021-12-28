@@ -25,8 +25,12 @@ function reloadWindowAtDomain(allowDomain) { // if allowDomain === *, is always 
 // init 顯示地址簿
 let addressPageURL = document.getElementById("addressPageURL");
 chrome.storage.sync.get("pttURL", ({ pttURL }) => {
-    addressPageURL.textContent = pttURL;
+    
     addressPageURL.setAttribute("href", pttURL);
+
+    let url = pttURL.replace(/^https:\/\//, '');
+    addressPageURL.textContent = url;
+
 });
 
 // 顯示標註開關
@@ -69,7 +73,6 @@ chrome.storage.sync.get("participant", ({ participant }) => {
         }
 
         let content = JSON.stringify(userAndAddressList);
-        console.log(content);
 
         const file = new Blob([content], { type: "text/plain" });
         downloadParticipantJson.href = URL.createObjectURL(file);
@@ -179,8 +182,6 @@ searchAddressButton.addEventListener("click", () => { // 允許用逗號或空�
 function showUsersAddress(userList) {
 
     chrome.storage.sync.get("userAddress", ({ userAddress }) => {
-
-        console.log("search: ", userList);
 
         // init 欄位
         $("#usersAddress>thead").empty();
