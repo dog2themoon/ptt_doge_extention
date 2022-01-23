@@ -43,6 +43,33 @@ chrome.storage.sync.get("isToolOpen", ({ isToolOpen }) => {
     }
 });
 
+// 加上隨機抽20位參與者功能
+let random20ParticipantButton = document.getElementById("random20Participant");
+random20ParticipantButton.addEventListener("click", () => {
+    chrome.storage.sync.get("participant", ({ participant }) => {
+
+        chrome.storage.sync.get("userAddress", ({ userAddress })=>{
+            let registeredParticipant = [];
+            registeredParticipant = participant.filter( user => userAddress[user]);
+            randomParticipant = shuffle(registeredParticipant);
+
+            showUsersAddress(randomParticipant.slice(0,20));
+        });
+        
+    })
+});
+
+
+function shuffle(array) {
+    let newArray =  Array.from(array);
+
+    for (let i = newArray.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+}
+
 // 加上搜尋所有參與者功能
 let searchParticipantButton = document.getElementById("searchParticipant");
 searchParticipantButton.addEventListener("click", () => {
