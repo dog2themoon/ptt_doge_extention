@@ -74,7 +74,13 @@ function shuffle(array) {
 let searchParticipantButton = document.getElementById("searchParticipant");
 searchParticipantButton.addEventListener("click", () => {
     chrome.storage.sync.get("participant", ({ participant }) => {
-        showUsersAddress(participant);
+
+        chrome.storage.sync.get("userAddress", ({ userAddress })=>{
+            let registeredParticipant = [];
+            registeredParticipant = participant.filter( user => userAddress[user]);
+            showUsersAddress(registeredParticipant);
+        });
+
     })
 });
 
