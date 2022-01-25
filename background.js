@@ -1,10 +1,9 @@
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.get("isToolOpen", ({ isToolOpen })=>{
-        if(typeof isToolOpen === undefined) {
+        if( isToolOpen === undefined) {
             chrome.storage.sync.set({ isToolOpen: true });
         }
     });
-    
 });
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -13,8 +12,17 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.get("userAddress", ({ userAddress })=>{
-        if(typeof userAddress === undefined) {
+        if( userAddress === undefined ) {
             chrome.storage.sync.set({ userAddress: {} });
         }
     });
 });
+
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.storage.sync.get("participant", ({ participant })=>{
+        if( participant === undefined ) {
+            chrome.storage.sync.set({ participant: [] });
+        }
+    });
+});
+

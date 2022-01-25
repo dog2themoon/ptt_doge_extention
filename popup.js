@@ -84,6 +84,16 @@ searchParticipantButton.addEventListener("click", () => {
     })
 });
 
+// 加上搜尋上次紀錄的功能
+let showLastSearchButton = document.getElementById("showLastSearch");
+showLastSearchButton.addEventListener("click", () => {
+    chrome.storage.sync.get("lastSearchUsers", ({ lastSearchUsers }) => {
+        if( lastSearchUsers ) {
+            showUsersAddress(lastSearchUsers);
+        }
+    })
+});
+
 // 加上下載所有參與者功能
 let downloadParticipantJson = document.getElementById("downloadParticipantJson");
 
@@ -213,6 +223,10 @@ searchAddressButton.addEventListener("click", () => { // 允許用逗號或空�
 
 
 function showUsersAddress(userList) {
+
+    if(userList || userList.length > 0) { // save search users
+        chrome.storage.sync.set({ lastSearchUsers: userList });
+    }
 
     chrome.storage.sync.get("userAddress", ({ userAddress }) => {
 
